@@ -3,6 +3,7 @@ from django.urls import reverse
 from .forms import UserRegistrationForm, UserProfileForm
 from django.contrib.auth.models import User
 from .models import UserProfile
+from django.http import JsonResponse
 
 def register(request):
     if request.method == 'POST':
@@ -26,3 +27,13 @@ def register(request):
 
 def registration_success(request):
     return redirect(reverse('home:Display'))
+
+def validate_credentials(request):
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+
+    # Perform authentication and credential validation here
+    # ...
+
+    # For now, let's just return a success response
+    return JsonResponse({'success': True})
