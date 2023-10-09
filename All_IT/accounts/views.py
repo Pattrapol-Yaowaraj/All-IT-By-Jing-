@@ -1,10 +1,27 @@
-# accounts/views.py
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views import generic
+from django.shortcuts import render, redirect
+from .forms import UserRegistrationForm, UserProfileForm
+from django.contrib.auth.models import User
+from .models import UserProfile
 
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save(commit=False)  # Don't commit yet
+            user.save()
 
-class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy("display")
-    template_name = "account/signup.html"
+            profile = profile_form.save(commit=False)  # Don't commit yet
+            profile.user = user  # Associate user with profile
+            profile.save()
+
+            return redirect('registration:registration_success')
+    else:
+        user_form = UserRegistrationForm()
+        profile_form = UserProfileForm()
+    
+    return render(request, 'account/signup.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def registration_success(request):
+    return render(request, 'account/display.html')
