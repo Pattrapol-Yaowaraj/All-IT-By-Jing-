@@ -137,17 +137,17 @@
 
 <body class="d-flex align-items-center py-4">
     <main class="form-signin">
-        <form>
+        <form method="post" action="{% url 'home:Display' %}">
             <img class="m" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/13909/cartoon-red-fox-clipart-md.png"
                 alt="" width="15%" height="15%">
             <h1 class="h3 mb-2 fw-normal">บอกฟองอากาศของเจ้ามา</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
 
@@ -158,48 +158,47 @@
                 </label>
             </div>
             <a id="signin-button" href="#" class="btn btn-primary w-100 py-2">Sign In</a>
-                <p style="padding-top: 10px;">ยังไม่มีฟองอากาศเป็นของตัวเองอย่างงั้นหรอ? <a href="accounts/register">มาสร้างฟองอากาศกัน</a></p>
+            <p style="padding-top: 10px;">ยังไม่มีฟองอากาศเป็นของตัวเองอย่างงั้นหรอ? <a href="{% url 'registration:register' %}">มาสร้างฟองอากาศกัน</a></p>
 
             <p class="mt-5 mb-3 text-body-secondary">&copy; All IT</p>
         </form>
     </main>
-    <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-        <script>
+    <script>
             const signInButton = document.getElementById('signin-button');
             signInButton.addEventListener('click', function(event) {
-              event.preventDefault();  // Prevent the default link behavior
-          
-              const email = document.getElementById('floatingInput').value;
-              const password = document.getElementById('floatingPassword').value;
-          
-              // Send a POST request to your backend to validate the credentials
-              fetch('/accounts/validate_credentials/', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRFToken': '{{ csrf_token }}',  // Use Django template variable for CSRF token
-                },
-                body: JSON.stringify({
-                  email: email,
-                  password: password,
-                }),
-              })
-              .then(response => {
-                if (response.ok) {
-                  // Credentials are valid, redirect to the Display page
-                  window.location.href = '/display';  // Update the URL to the correct path
-                } else {
-                  // Credentials are not valid, display an error message or handle accordingly
-                  alert('Invalid credentials. Please try again.');
-                }
-              })
-              .catch(error => {
-                console.error('Error:', error);
-              });
+                event.preventDefault();  // Prevent the default link behavior
+        
+                const email = document.getElementById('floatingInput').value;
+                const password = document.getElementById('floatingPassword').value;
+        
+                // Send a POST request to your backend to validate the credentials
+                fetch("{% url 'home:Display' %}", {  // Updated to use Django URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': '{{ csrf_token }}',  // Use Django template variable for CSRF token
+                    },
+                    body: new URLSearchParams({
+                        'floatingInput': email,  // Adjust based on your form field names
+                        'floatingPassword': password  // Adjust based on your form field names
+                    }),
+                })
+                .then(response => response.json())  // Parse the response as JSON
+                .then(data => {
+                    if (data.valid) {
+                        // Credentials are valid, redirect to the Display page
+                        window.location.href = '/display';  // Update the URL to the correct path
+                    } else {
+                        // Credentials are not valid, display an error message or handle accordingly
+                        alert('Invalid credentials. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             });
-          </script>
+    </script>
+        
                    
 </body>
 

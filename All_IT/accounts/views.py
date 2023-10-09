@@ -4,6 +4,7 @@ from .forms import UserRegistrationForm, UserProfileForm
 from django.contrib.auth.models import User
 from .models import UserProfile
 from django.http import JsonResponse
+from django.shortcuts import render
 
 def register(request):
     if request.method == 'POST':
