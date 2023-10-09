@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import register, registration_success
 
+
+
 app_name = 'registration'
 
 urlpatterns = [

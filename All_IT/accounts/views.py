@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .forms import UserRegistrationForm, UserProfileForm
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -24,4 +25,4 @@ def register(request):
     return render(request, 'account/signup.html', {'user_form': user_form, 'profile_form': profile_form})
 
 def registration_success(request):
-    return render(request, 'account/display.html')
+    return redirect(reverse('home:Display'))
