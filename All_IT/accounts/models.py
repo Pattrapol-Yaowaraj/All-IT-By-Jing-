@@ -4,7 +4,7 @@ from django.db import models
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    sid = models.CharField(max_length=20)
+    sid = models.CharField(max_length=9)
     year = models.PositiveIntegerField()
     major = models.CharField(max_length=50)
 
