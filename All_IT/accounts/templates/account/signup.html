@@ -8,7 +8,15 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      color: white;
+      height: 100vh;
+      background-image: linear-gradient(to bottom, #4ea0e2, #204051); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
     .form-group {
       margin-bottom: 15px;
     }
@@ -20,6 +28,7 @@
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
+      color: #161368;
     }
   </style>
 </head>
@@ -27,6 +36,20 @@
   <h1>Sign Up</h1>
   <form method="post" action="{% url 'registration:register' %}">
     {% csrf_token %}
+    {% if user_form.errors %}
+      {% for field in user_form %}
+        {% for error in field.errors %}
+          <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+    {% if profile_form.errors %}
+      {% for field in profile_form %}
+        {% for error in field.errors %}
+          <div style="color: red;">{{ error }}</div>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
     <div class="form-group">
       <label for="name">Display Name:</label>
       <input type="text" id="name" name="name" required>
