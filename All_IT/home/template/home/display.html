@@ -14,5 +14,11 @@
 </header>
 <p>คำถาม: เนื้อหาส่วนนี้เป็นของ Heading ไหน?</p>
 <a href="/" class="btn btn-primary w-100 py-2">Home</a>
+<h2>Display Links</h2>
+<ul>
+    {% for link in links %}
+        <li><a href="{{ link.url }}">{{ link.description }}</a></li>
+    {% endfor %}
+</ul>
 </body>
 </html>
