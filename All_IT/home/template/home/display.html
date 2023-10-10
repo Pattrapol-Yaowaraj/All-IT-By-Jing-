@@ -16,7 +16,7 @@
 <a href="/" class="btn btn-primary w-100 py-2">Home</a>
 <h2>Display Links</h2>
 <ul>
-    {% for link in links %}
+    {% for link in user_links %}
         <li><a href="{{ link.url }}">{{ link.description }}</a></li>
     {% endfor %}
 </ul>

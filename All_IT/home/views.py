@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from django.contrib import messages
 from django.http import JsonResponse
+from userlink.models import UserLink
 
 def Home(request):
     return render(request, 'home/home.html')
@@ -19,4 +19,5 @@ def Display(request):
         else:
             return JsonResponse({'valid': False})
 
-    return render(request, 'home/display.html')
+    user_links = UserLink.objects.all()
+    return render(request, 'home/display.html', {'user_links': user_links})
