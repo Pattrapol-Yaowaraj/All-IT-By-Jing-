@@ -37,7 +37,7 @@ def register(request):
     
     return render(request, 'account/signup.html', {'user_form': user_form, 'profile_form': profile_form})
 def registration_success(request):
-    return redirect(reverse('home:Display'))
+    return redirect(reverse('home:Home'))
 
 def validate_credentials(request):
     email = request.POST.get('email')
