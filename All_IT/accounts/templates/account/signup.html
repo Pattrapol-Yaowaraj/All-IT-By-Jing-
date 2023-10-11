@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,9 @@
       padding: 20px;
       color: white;
       height: 100vh;
-      background-image: linear-gradient(to bottom, #4ea0e2, #204051); 
+      background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
+      background-size: cover;
+      background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,6 +26,7 @@
     label {
       display: block;
       margin-bottom: 5px;
+      color: rgb(255, 255, 255);
     }
     input, select {
       width: 100%;
@@ -34,19 +38,19 @@
 </head>
 <body>
   <h1>Sign Up</h1>
-  <form method="post" action="{% url 'registration:register' %}">
+  <form method="post" action="{% url 'registration:register' %}" style="width: 80%;">
     {% csrf_token %}
     {% if user_form.errors %}
       {% for field in user_form %}
         {% for error in field.errors %}
-          <div style="color: red;">{{ error }}</div>
+          <div style="color: red;" size="1rem">{{ error }}</div>
         {% endfor %}
       {% endfor %}
     {% endif %}
     {% if profile_form.errors %}
       {% for field in profile_form %}
         {% for error in field.errors %}
-          <div style="color: red;">{{ error }}</div>
+          <div style="color: red;" size="1rem">{{ error }}</div>
         {% endfor %}
       {% endfor %}
     {% endif %}
