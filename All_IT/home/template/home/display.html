@@ -1,27 +1,46 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            color: white;
-            background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
-            background-size: cover;
-            background-repeat: no-repeat;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        color: white;
+        background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         }
+
+        button {
+        padding:10px 20px;
+        width: 20%;
+        border: none;
+        border-radius: 10px;
+        background-color: #305dff;
+        color: white;
+        cursor: pointer;
+        align-items: center;
+        margin: auto;
+        display: block;
+        }
+        
+        /* Style the submit button on hover */
+        button:hover {
+        background-color: #2e59a8;
+        }
+
     </style>
 </head>
 <body>
 <header>
-    <h1>Heading A</h1>
+    <h1>โปรดเลือกสาขา</h1>
     <p>เนื้อหาส่วนนี้เป็นของ Heading A</p>
-    <img src = "{% static 'display/shocked.png' %}" alt=""My Image">
+    <img src = "{% static 'display/shocked.png' %}" alt="My Image">
     <h2>Heading B</h2>
     <p>เนื้อหาส่วนนี้เป็นของ Heading B</p>
     <h2>Heading C</h2>

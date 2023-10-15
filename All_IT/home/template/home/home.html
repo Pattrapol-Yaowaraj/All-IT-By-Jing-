@@ -104,6 +104,7 @@
         body {
             height: 100vh;
             background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
+            background-size: 300%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -123,15 +124,13 @@
 
         .form-signin input[type="email"] {
             margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
+            border-radius: 15;
             color: #161368;
         }
 
         .form-signin input[type="password"] {
             margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            border-radius: 15;
             color: #161368;
         }
     </style>
@@ -147,7 +146,7 @@
 
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
+                <label for="floatingInput">Email address</label><br>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password">
