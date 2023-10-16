@@ -20,11 +20,14 @@
         }
 
         button {
+        background-color: #0825b4;
+        font-size: x-large;
+        font-weight: bold;
         padding:10px 20px;
-        width: 20%;
+        width: 150px;
+        height: 100px;
         border: none;
         border-radius: 10px;
-        background-color: #305dff;
         color: white;
         cursor: pointer;
         align-items: center;
@@ -32,19 +35,14 @@
         display: block;
         }
         
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        /* Style the submit button on hover */
         button:hover {
-        background-color: #2e59a8;
+        background-color: #ffffff;
+        color: #305dff;
         }
+        
         .edit-button {
             padding: 10px 20px;
-            width: 50%;
+            width: 70%;
             border: none;
             border-radius: 10px;
             background-color: #305dff;
@@ -56,7 +54,6 @@
             text-decoration: none; /* Remove underline */
         }
 
-        /* Style the button on hover */
         .edit-button:hover {
             background-color: #2e59a8;
         }
@@ -66,12 +63,11 @@
 <body>
 <header>
     <h1>โปรดเลือกสาขา</h1>
-    <p>เนื้อหาส่วนนี้เป็นของ Heading A</p>
-    <img src = "{% static 'display/shocked.png' %}" alt="My Image">
-    <h2>Heading B</h2>
-    <p>เนื้อหาส่วนนี้เป็นของ Heading B</p>
-    <h2>Heading C</h2>
-    <p>เนื้อหาส่วนนี้เป็นของ Heading C</p>
+    <button>IT</button><br>
+    <button>DSBA</button><br>
+    <button>BIT</button><br>
+    <button>AIT</button>
+
 </header>
 <p>คำถาม: เนื้อหาส่วนนี้เป็นของ Heading ไหน?</p>
 <a href="/" class="btn btn-primary w-100 py-2">Home</a>
