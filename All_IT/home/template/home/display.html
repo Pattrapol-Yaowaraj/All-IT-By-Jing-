@@ -68,9 +68,6 @@
 <a href="/" class="btn btn-primary w-100 py-2">Home</a>
     <h2>Display Links</h2>
     <ul>
-        {% for link in user_links %}
-            <li><a href="{{ link.url }}">{{ link.description }}</a></li>
-        {% endfor %}
         {% for link2 in links_for_user %}
         <li><a href="{{ link2.link }}">{{ link2.link_name }}</a></li>
         {% endfor %}
