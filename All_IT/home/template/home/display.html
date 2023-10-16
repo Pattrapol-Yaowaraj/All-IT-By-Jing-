@@ -33,6 +33,24 @@
         button:hover {
         background-color: #2e59a8;
         }
+        .edit-button {
+            padding: 10px 20px;
+            width: 20%;
+            border: none;
+            border-radius: 10px;
+            background-color: #305dff;
+            color: white;
+            cursor: pointer;
+            margin: auto;
+            display: block;
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Style the button on hover */
+        .edit-button:hover {
+            background-color: #2e59a8;
+        }
 
     </style>
 </head>
@@ -56,6 +74,7 @@
         {% for link2 in links_for_user %}
         <li><a href="{{ link2.link }}">{{ link2.link_name }}</a></li>
         {% endfor %}
+        <a href="{% url 'home:edit' %}" class="edit-button">Edit Profile</a>
     </ul>
 </body>
 </html>

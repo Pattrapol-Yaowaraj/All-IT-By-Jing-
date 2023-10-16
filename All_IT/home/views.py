@@ -1,11 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages  
 from django.http import JsonResponse
 from userlink.models import UserLink, LinkForIT
 from accounts.models import UserProfile
+from .forms import UserProfileEditForm
 
 def Home(request):
     return render(request, 'home/home.html')
+
+# @login_required
+def editprofile(request):
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+    if request.method == 'POST':
+        form = UserProfileEditForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')  # Add success message
+            return redirect('display')  # Redirect to the display page after editing
+        else:
+            messages.error(request, 'Profile update failed. Please correct the errors.')  # Add error message
+    else:
+        form = UserProfileEditForm(instance=user_profile)
+
+    return render(request, 'home/edit.html', {'form': form})
 
 def Display(request):
     user_year = request.session.get('user_year', 0)

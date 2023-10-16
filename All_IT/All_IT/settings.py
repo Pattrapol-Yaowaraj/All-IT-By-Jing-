@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'userlink',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

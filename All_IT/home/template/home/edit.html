@@ -1,0 +1,11 @@
+{% load widget_tweaks %}
+
+{% block content %}
+  <h2>Edit Profile</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.year|add_class:"form-control" }}
+    {{ form.major|add_class:"form-control" }}
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+{% endblock %}
