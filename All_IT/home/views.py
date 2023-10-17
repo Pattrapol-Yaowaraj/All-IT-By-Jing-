@@ -10,17 +10,20 @@ from .forms import UserProfileEditForm
 def Home(request):
     return render(request, 'home/home.html')
 
-# @login_required
+@login_required
 def editprofile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
         form = UserProfileEditForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')  # Add success message
-            return redirect('display')  # Redirect to the display page after editing
+            messages.success(request, 'Profile updated successfully')
+            request.session['user_year'] = form.instance.year
+            request.session['user_major'] = form.instance.major
+            request.session.save()
+            return redirect('home:Display')
         else:
-            messages.error(request, 'Profile update failed. Please correct the errors.')  # Add error message
+            messages.error(request, 'Profile update failed. Please correct the errors.')
     else:
         form = UserProfileEditForm(instance=user_profile)
 
@@ -30,6 +33,8 @@ def Display(request):
     user_year = request.session.get('user_year', 0)
     user_major = request.session.get('user_major', 'nah')
 
+    user_profile = UserProfile.objects.filter(year=user_year, major=user_major).first()
+
     if request.method == 'POST':
         email = request.POST.get('floatingInput')
         password = request.POST.get('floatingPassword')
@@ -37,11 +42,12 @@ def Display(request):
         if user is not None:
             login(request, user)
             try:
-                user_profile = UserProfile.objects.get(user=user)
+                if user_profile is None:
+                    user_profile = UserProfile.objects.get(user=user)
                 user_year = user_profile.year
                 user_major = user_profile.major
-                request.session['user_year'] = user_year  # Store user_year in the session
-                request.session['user_major'] = user_major  # Store user_major in the session
+                request.session['user_year'] = user_year
+                request.session['user_major'] = user_major
                 user_links = list(UserLink.objects.all().values())
                 links_for_user = list(LinkForIT.objects.filter(year=user_year, major=user_major).values())
                 return JsonResponse({'valid': True, 'user_year': user_year, 'user_major': user_major, 'user_links': user_links, 'links_for_user': links_for_user})
