@@ -11,8 +11,9 @@
         padding: 20px;
         color: white;
         background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
-        background-size: cover;
+        background-size: 100%;
         background-repeat: no-repeat;
+        background-attachment: fixed;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,6 +41,36 @@
         color: #305dff;
         }
         
+        .ul-upper {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #ffffff;
+        }
+
+        header{
+            background-color: #ffffff;
+            width: 100%;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: #305dff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #305dff;
+            color: #ffffff;
+        }
+
         .edit-button {
             padding: 10px 20px;
             width: 70%;
@@ -62,7 +93,9 @@
 </head>
 <body>
 <header>
-    <h1>โปรดเลือกสาขา</h1>
+    <ul class="ul-upper">
+        <li><a class="active">Profile</a></li>
+    </ul>
 
 </header>
 <p>คำถาม: เนื้อหาส่วนนี้เป็นของ Heading ไหน?</p>
