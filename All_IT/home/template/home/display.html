@@ -63,10 +63,6 @@
 <body>
 <header>
     <h1>โปรดเลือกสาขา</h1>
-    <button>IT</button><br>
-    <button>DSBA</button><br>
-    <button>BIT</button><br>
-    <button>AIT</button>
 
 </header>
 <p>คำถาม: เนื้อหาส่วนนี้เป็นของ Heading ไหน?</p>
@@ -74,7 +70,7 @@
     <h2>Display Links</h2>
     <ul>
         {% for link2 in links_for_user %}
-        <li><a href="{{ link2.link }}">{{ link2.link_name }}</a></li><br>
+        <button><a href="{{ link2.link }}" class="button">{{ link2.link_name }}</a></button><br>
         {% endfor %}
         <a href="{% url 'home:edit' %}" class="edit-button">Edit Profile</a>
     </ul>
