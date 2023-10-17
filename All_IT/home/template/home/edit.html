@@ -1,11 +1,28 @@
-{% load widget_tweaks %}
-
-{% block content %}
+<html>{% load widget_tweaks %}
+  <head>
+    <style>
+              body {
+            font-family: "Kanit", sans-serif;
+            height: 100vh;
+            background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
+            background-size: 300%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+  </head>
   <h2>Edit Profile</h2>
+  <div>
+    <p>Name: {{ user_profile.name }}</p>
+    <p>Student ID: {{ user_profile.sid }}</p>
+  </div>
   <form method="post">
     {% csrf_token %}
     {{ form.year|add_class:"form-control" }}
     {{ form.major|add_class:"form-control" }}
     <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" name="delete_account" class="btn btn-danger">Delete Account</button>
   </form>
-{% endblock %}
+</html>

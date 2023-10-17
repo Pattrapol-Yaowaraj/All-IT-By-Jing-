@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.http import JsonResponse
 from userlink.models import UserLink, LinkForIT
 from accounts.models import UserProfile
@@ -9,21 +10,27 @@ from .forms import UserProfileEditForm
 def Home(request):
     return render(request, 'home/home.html')
 
+def Delete(request):
+    return render(request, 'home/delete.html')
+
 @login_required
 def editprofile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
+
     if request.method == 'POST':
+        if 'delete_account' in request.POST:
+            user_profile.user.delete()
+            logout(request)
+            return redirect('home:Home')
+
         form = UserProfileEditForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
-            request.session['user_year'] = form.instance.year
-            request.session['user_major'] = form.instance.major
-            request.session.save()
             return redirect('home:Display')
     else:
         form = UserProfileEditForm(instance=user_profile)
 
-    return render(request, 'home/edit.html', {'form': form})
+    return render(request, 'home/edit.html', {'form': form, 'user_profile': user_profile})
 
 def Display(request):
     user_year = request.session.get('user_year', 0)
