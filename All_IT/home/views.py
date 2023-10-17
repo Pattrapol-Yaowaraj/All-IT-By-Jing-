@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages  
+from django.contrib.auth.decorators import login_required 
 from django.http import JsonResponse
 from userlink.models import UserLink, LinkForIT
 from accounts.models import UserProfile
@@ -17,13 +16,10 @@ def editprofile(request):
         form = UserProfileEditForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
             request.session['user_year'] = form.instance.year
             request.session['user_major'] = form.instance.major
             request.session.save()
             return redirect('home:Display')
-        else:
-            messages.error(request, 'Profile update failed. Please correct the errors.')
     else:
         form = UserProfileEditForm(instance=user_profile)
 
