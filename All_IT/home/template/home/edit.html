@@ -1,3 +1,4 @@
+{% load static %}
 <html>{% load widget_tweaks %}
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +16,46 @@
             align-items: center;
             justify-content: center;
         }
+        .circle{
+          border-radius: 100%;
+          width: 20%;
+          height: 37%;
+        }
+
+        button {
+        background-color: #0825b4;
+        font-size: small;
+        font-weight: bold;
+        padding:10px;
+        width: 100px;
+        height: 60px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        align-items: center;
+        margin: auto;
+        display: inline-block;
+        }
+        
+        button:hover {
+        background-color: #ffffff;
+        color: #305dff;
+        }
+        
+        .btn-btn-danger{
+        background-color: rgb(255, 255, 255);
+        color: #305dff;
+        }
+
+        .btn-btn-danger:hover{
+        background-color: coral;
+        color: #ffffff;
+        }
+
     </style>
   </head>
+  <image src="{% static 'display/fosh.png' %}" class="circle">
   <h2>Edit Profile</h2>
   <div>
     <p>Name: {{ user_profile.name }}</p>
@@ -27,6 +66,6 @@
     {{ form.year|add_class:"form-control" }}
     {{ form.major|add_class:"form-control" }}
     <button type="submit" class="btn btn-primary">Save Changes</button>
-    <button type="submit" name="delete_account" class="btn btn-danger">Delete Account</button>
+    <button type="submit" name="delete_account" class="btn-btn-danger">Delete Account</delete-button>
   </form>
 </html>
