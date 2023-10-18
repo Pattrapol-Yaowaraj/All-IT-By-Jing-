@@ -13,7 +13,7 @@
       padding: 20px;
       color: white;
       background-image: linear-gradient(#5590d0,rgb(42, 29, 94) );
-      background-size: cover;
+      background-attachment: fixed;
       background-repeat: no-repeat;
       display: flex;
       flex-direction: column;
@@ -30,7 +30,7 @@
       color: rgb(255, 255, 255);
     }
     input, select {
-      width: 100%;
+      width: 70%;
       padding: 10px;
       box-sizing: border-box;
       color: #161368;
@@ -59,7 +59,7 @@
     }
   </style>
 </head>
-<body>
+<body style="text-align: center;">
   <h1>Sign Up</h1>
   <form method="post" action="{% url 'registration:register' %}" style="width: 80%;">
     {% csrf_token %}
@@ -78,17 +78,17 @@
       {% endfor %}
     {% endif %}
     <div class="form-group">
-      <label for="name">Display Name:</label>
+      <label for="name">Display Name</label>
       <input type="text" id="name" name="name" required>
     </div>
 
     <div class="form-group">
-      <label for="sid">Student ID:</label>
+      <label for="sid">Student ID</label>
       <input type="text" id="sid" name="sid" required>
     </div>
 
     <div class="form-group">
-      <label for="year">Year:</label>
+      <label for="year">Year</label>
       <select id="year" name="year" required>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -98,7 +98,7 @@
     </div>
 
     <div class="form-group">
-      <label for="major">Major:</label>
+      <label for="major">Major</label>
       <select id="major" name="major" required>
         <option value="IT">IT</option>
         <option value="DSBA">DSBA</option>
@@ -108,17 +108,17 @@
     </div>
 
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
     </div>
 
     <div class="form-group">
-      <label for="password1">Password:</label>
+      <label for="password1">Password</label>
       <input type="password" id="password1" name="password1" required>
     </div>
 
     <div class="form-group">
-      <label for="password2">Confirm Password:</label>
+      <label for="password2">Confirm Password</label>
       <input type="password" id="password2" name="password2" required>
     </div>
 

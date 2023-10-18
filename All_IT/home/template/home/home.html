@@ -109,7 +109,7 @@
             font-family: "Kanit", sans-serif;
             height: 100vh;
             background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
-            background-size: 300%;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -153,11 +153,11 @@
 
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Username</label><br>
+                <label for="floatingInput" style="color: lightblue;">Username</label><br>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                <label for="floatingPassword" style="color: lightblue;">Password</label>
             </div>
 
             <a id="signin-button" href="#" class="btn btn-primary w-100 py-2">Sign In</a>
@@ -201,8 +201,6 @@
                 });
             });
     </script>
-        
-                   
 </body>
 
 </html>
