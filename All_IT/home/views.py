@@ -14,7 +14,7 @@ def Delete(request):
     return render(request, 'home/delete.html')
 
 @login_required
-def editprofile(request):
+def Editprofile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -26,6 +26,8 @@ def editprofile(request):
         form = UserProfileEditForm(request.POST, instance=user_profile)
         if form.is_valid():
             form.save()
+            request.session['user_year'] = form.cleaned_data['year']
+            request.session['user_major'] = form.cleaned_data['major']
             return redirect('home:Display')
     else:
         form = UserProfileEditForm(instance=user_profile)
@@ -62,3 +64,7 @@ def Display(request):
     user_links = UserLink.objects.all()
     links_for_user = LinkForIT.objects.filter(year=user_year, major=user_major)
     return render(request, 'home/display.html', {'user_links': user_links, 'links_for_user': links_for_user})
+
+def Logout(request):
+    logout(request)
+    return redirect('home:Home')
