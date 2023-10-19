@@ -21,7 +21,7 @@
 
         button {
         background-color: #0825b4;
-        font-size: x-large;
+        font-size: medium;
         font-weight: bold;
         padding:10px 20px;
         width: 150px;
@@ -31,7 +31,7 @@
         color: white;
         cursor: pointer;
         align-items: center;
-        margin: auto;
+        margin: 5px;
         display: block;
         }
         
@@ -88,24 +88,28 @@
             background-color: #2e59a8;
         }
 
+        .button-container{
+            display:flex;
+        }
+
     </style>
 </head>
 <body>
 <header>
     <ul class="ul-upper">
+        <li><a href="{% url 'home:Logout' %}">Logout</a></li>
         <li><a class="active">Profile</a></li>
     </ul>
 
 </header>
-<p>คำถาม: เนื้อหาส่วนนี้เป็นของ Heading ไหน?</p>
-<a href="/" class="btn btn-primary w-100 py-2">Home</a>
-    <h2>Display Links</h2>
+<h2>นี่คือ link ของเจ้า</h2>
     <ul>
-        {% for link2 in links_for_user %}
-        <button><a href="{{ link2.link }}" class="button" style="color: lightblue;">{{ link2.link_name }}</a></button><br>
-        {% endfor %}
+        <div class="button-container">
+            {% for link2 in links_for_user %}
+            <button><a href="{{ link2.link }}" class="button" style="color: lightblue;">{{ link2.link_name }}</a></button><br>
+            {% endfor %}
+        </div><br>
         <a href="{% url 'home:edit' %}" class="edit-button">Edit Profile</a>
-        <a href="{% url 'home:Logout' %}" class="edit-button">Logout</a>
     </ul>
 </body>
 </html>
