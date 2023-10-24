@@ -21,20 +21,16 @@
 
         button {
         background-color: #0825b4;
-        font-size: medium;
-        font-weight: bold;
-        padding:10px 20px;
-        width: 150px;
-        height: 100px;
         border: none;
         border-radius: 10px;
         color: white;
         cursor: pointer;
         align-items: center;
+        justify-content: center;
         margin: 5px;
-        display: block;
+        display: flex;
         }
-        
+
         button:hover {
         background-color: #ffffff;
         color: #305dff;
@@ -71,7 +67,7 @@
         }
 
         .edit-button {
-            padding: 10px 20px;
+            padding: 10px;
             width: 70%;
             border: none;
             border-radius: 10px;
@@ -88,10 +84,23 @@
             background-color: #2e59a8;
         }
 
-        .button-container{
-            display:flex;
+        .button-link {
+            text-decoration: none;
+            color: lightblue;
+            font-size: medium;
+            font-weight: bold;
+            width: 130%;
+            height: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            display: flex;
         }
 
+        .centered-container {
+            display: grid;
+            place-items: center;
+        } /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
     </style>
 </head>
 <body>
@@ -100,13 +109,15 @@
         <li><a href="{% url 'home:Logout' %}">Logout</a></li>
         <li><a class="active">Profile</a></li>
     </ul>
-
 </header>
+
 <h2>นี่คือ link ของเจ้า</h2>
     <ul>
-        <div class="button-container">
+        <div class="centered-container">
             {% for link2 in links_for_user %}
-            <button><a href="{{ link2.link }}" class="button" style="color: lightblue;">{{ link2.link_name }}</a></button><br>
+            <button class="button-link">
+                <a href="{{ link2.link }}" class="button-link">{{ link2.link_name }}</a>
+            </button><br>
             {% endfor %}
         </div><br>
         <a href="{% url 'home:edit' %}" class="edit-button">Edit Profile</a>
