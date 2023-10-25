@@ -2,10 +2,30 @@
 {% load static %}
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
+
+        @media (min-width: 100vh) {
+                    .bd-placeholder-img-lg {
+                        font-size: 3.5rem;
+                        min-height: 100vh;
+                    }
+                }
+
+        @media (max-width: 100vh) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+                min-height: 100vh;
+            }
+        }
+
         body {
         font-family: 'Kanit', sans-serif;
         padding: 20px;
@@ -17,23 +37,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        }
-
-        button {
-        background-color: #0825b4;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        margin: 5px;
-        display: flex;
-        }
-
-        button:hover {
-        background-color: #ffffff;
-        color: #305dff;
         }
         
         .ul-upper {
@@ -85,6 +88,8 @@
         }
 
         .button-link {
+            background-color: #0825b4;
+            border-radius: 10px;
             text-decoration: none;
             color: lightblue;
             font-size: medium;
@@ -97,30 +102,43 @@
             display: flex;
         }
 
+        .button-link:hover {
+            background-color: lightblue;
+            color: #0825b4;
+        }
+
+
         .centered-container {
             display: grid;
             place-items: center;
+            align-items: center;
+            width: 100vh;
+            padding-right: 90px;
         } /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
     </style>
 </head>
-<body>
 <header>
     <ul class="ul-upper">
         <li><a href="{% url 'home:Logout' %}">Logout</a></li>
         <li><a class="active">Profile</a></li>
     </ul>
 </header>
+<body>
 
-<h2>นี่คือ link ของเจ้า</h2>
+
+    <h2>นี่คือ link ของเจ้า</h2>
+<main>
     <ul>
-        <div class="centered-container">
+        <div class="centered-container" style="text-align: center;">
+            
             {% for link2 in links_for_user %}
-            <button class="button-link">
+            <class="button-link">
                 <a href="{{ link2.link }}" class="button-link">{{ link2.link_name }}</a>
             </button><br>
             {% endfor %}
         </div><br>
-        <a href="{% url 'home:edit' %}" class="edit-button">Edit Profile</a>
     </ul>
+    <a href="{% url 'home:edit' %}" class="edit-button" style = "width: 100px;">Edit Profile</a>
+</main>
 </body>
 </html>

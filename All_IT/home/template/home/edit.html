@@ -1,10 +1,23 @@
 {% load static %}
 <html>{% load widget_tweaks %}
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 1025px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
               body {
             font-family: "Kanit", sans-serif;
             color: white;
@@ -18,8 +31,9 @@
         }
         .circle{
           border-radius: 100%;
-          width: 20%;
-          height: 37%;
+          width: 175px;
+          height: 175px;
+          border: solid white 5px;
         }
 
         button {
@@ -53,11 +67,19 @@
         color: #ffffff;
         }
 
+        .centered-container {
+            display: block;
+            place-items: center;
+            align-items: center;
+            text-align: center;
+        }
+
     </style>
   </head>
   <image src="{% static 'display/fosh.png' %}" class="circle">
-  <h2>Edit Profile</h2>
-  <div>
+  <body>
+  <h2 style="margin-top: 10px; margin-bottom: 2px;">Edit Profile</h2>
+  <div class="centered-container">
     <p>Name: {{ user_profile.name }}</p>
     <p>Student ID: {{ user_profile.sid }}</p>
   </div>
@@ -65,7 +87,11 @@
     {% csrf_token %}
     {{ form.year|add_class:"form-control" }}
     {{ form.major|add_class:"form-control" }}
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <button type="submit" name="delete_account" class="btn-btn-danger">Delete Account</delete-button>
+    <div class="centered-container">
+      <br>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+      <button type="submit" name="delete_account" class="btn-btn-danger">Delete Account</delete-button>
+    </div>
   </form>
+</body>
 </html>
