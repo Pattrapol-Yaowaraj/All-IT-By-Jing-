@@ -4,22 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
 
-        @media (min-width: 100vh) {
+        @media (min-width: 768px) {
                     .bd-placeholder-img-lg {
                         font-size: 3.5rem;
                         min-height: 100vh;
                     }
                 }
 
-        @media (max-width: 100vh) {
+        @media (max-width: 1025px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
                 min-height: 100vh;
@@ -47,9 +45,15 @@
         background-color: #ffffff;
         }
 
-        header{
+        nav {
             background-color: #ffffff;
+            color: #fff;
+            padding-right: 100px;
             width: 100%;
+            position: fixed;
+            top: 0;
+            align-items: center;
+
         }
 
         li {
@@ -113,20 +117,20 @@
             place-items: center;
             align-items: center;
             width: 100vh;
-            padding-right: 90px;
+            padding-right: 100px;
         } /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
     </style>
 </head>
-<header>
+<nav>
     <ul class="ul-upper">
         <li><a href="{% url 'home:Logout' %}">Logout</a></li>
-        <li><a class="active">Profile</a></li>
-    </ul>
+        <li><a href="{% url 'home:edit' %}" class="active">Profile</a></li>
+    </nav>
 </header>
 <body>
 
 
-    <h2>นี่คือ link ของเจ้า</h2>
+    <h2 style="padding-top: 20px;">นี่คือ link ของเจ้า</h2>
 <main>
     <ul>
         <div class="centered-container" style="text-align: center;">
@@ -138,7 +142,6 @@
             {% endfor %}
         </div><br>
     </ul>
-    <a href="{% url 'home:edit' %}" class="edit-button" style = "width: 100px;">Edit Profile</a>
 </main>
 </body>
 </html>
