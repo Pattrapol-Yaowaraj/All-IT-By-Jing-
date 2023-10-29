@@ -7,6 +7,16 @@ class UserProfileEditForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['year', 'major']
+    MAJOR_CHOICES = [
+        ('IT', 'IT'),
+        ('DSBA', 'DSBA'),
+        ('AIT', 'AIT'),
+        ('BIT', 'BIT'),
+    ]
+    major = forms.ChoiceField(
+        choices=MAJOR_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()

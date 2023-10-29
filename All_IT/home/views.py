@@ -16,12 +16,13 @@ def Delete(request):
 @login_required
 def Editprofile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
+    major_value = user_profile.major
 
     if request.method == 'POST':
         if 'delete_account' in request.POST:
             user_profile.user.delete()
             logout(request)
-            return redirect('home:Home')
+            return redirect('home:Delete')
 
         form = UserProfileEditForm(request.POST, instance=user_profile)
         if form.is_valid():
@@ -32,12 +33,11 @@ def Editprofile(request):
     else:
         form = UserProfileEditForm(instance=user_profile)
 
-    return render(request, 'home/edit.html', {'form': form, 'user_profile': user_profile})
+    return render(request, 'home/edit.html', {'form': form, 'user_profile': user_profile, 'major_value': major_value})
 
 def Display(request):
     user_year = request.session.get('user_year', 0)
     user_major = request.session.get('user_major', 'nah')
-
     user_profile = UserProfile.objects.filter(year=user_year, major=user_major).first()
 
     if request.method == 'POST':

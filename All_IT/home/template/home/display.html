@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,13 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <style>
-
         @media (min-width: 768px) {
-                    .bd-placeholder-img-lg {
-                        font-size: 3.5rem;
-                        min-height: 100vh;
-                    }
-                }
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+                min-height: 100vh;
+            }
+        }
 
         @media (max-width: 1025px) {
             .bd-placeholder-img-lg {
@@ -25,24 +25,24 @@
         }
 
         body {
-        font-family: 'Kanit', sans-serif;
-        padding: 20px;
-        color: white;
-        background-image: linear-gradient(rgb(85, 144, 208),rgb(42, 29, 94) );
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+            font-family: 'Kanit', sans-serif;
+            padding: 20px;
+            color: white;
+            background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        
+
         .ul-upper {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #ffffff;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ffffff;
         }
 
         nav {
@@ -83,8 +83,10 @@
             cursor: pointer;
             margin: auto;
             display: block;
-            text-align: center; /* Center the text */
-            text-decoration: none; /* Remove underline */
+            text-align: center;
+            /* Center the text */
+            text-decoration: none;
+            /* Remove underline */
         }
 
         .edit-button:hover {
@@ -118,31 +120,36 @@
             align-items: center;
             width: 100vh;
             padding-right: 100px;
-        } /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
+        }
+
+        /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
     </style>
 </head>
 <nav>
     <ul class="ul-upper">
-        <img src="{% static 'display/fox1.png' %}" style="height: 45px;width: 45px; padding-left: 100px;">
+        <a href="{% url 'home:Home' %}"><img src="{% static 'display/fox1.png' %}"
+                style="height: 45px;width: 45px; padding-left: 100px;"></a>
         <li><a href="{% url 'home:Logout' %}">Logout</a></li>
         <li><a href="{% url 'home:edit' %}" class="active">Profile</a></li>
-    </nav>
-</header>
+    </ul>
+</nav>
+
 <body>
 
 
     <h2 style="padding-top: 20px;">นี่คือ link ของเจ้า</h2>
-<main>
-    <ul>
-        <div class="centered-container" style="text-align: center;">
-            
-            {% for link2 in links_for_user %}
-            <class="button-link">
-                <a href="{{ link2.link }}" class="button-link">{{ link2.link_name }}</a>
-            </button><br>
-            {% endfor %}
-        </div><br>
-    </ul>
-</main>
+    <main>
+        <ul>
+            <div class="centered-container" style="text-align: center;">
+
+                {% for link2 in links_for_user %}
+                <class="button-link">
+                    <a href="{{ link2.link }}" class="button-link">{{ link2.link_name }}</a>
+                    </button><br>
+                    {% endfor %}
+            </div><br>
+        </ul>
+    </main>
 </body>
+
 </html>
