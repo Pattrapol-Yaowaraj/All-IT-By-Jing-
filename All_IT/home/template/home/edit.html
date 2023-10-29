@@ -50,7 +50,7 @@
       color: white;
       cursor: pointer;
       align-items: center;
-      margin: auto;
+      margin: 10px;
       display: inline-block;
     }
 
@@ -60,7 +60,7 @@
     }
 
     .btn-btn-danger {
-      background-color: rgb(255, 255, 255);
+      background-color: lightblue;
       color: #305dff;
     }
 
@@ -134,16 +134,17 @@
   </style>
   <nav>
     <ul class="ul-upper">
-      <a href="{% url 'home:Home' %}"><img src="{% static 'display/fox1.png' %}"
-          style="height: 45px;width: 45px; padding-left: 100px;"></a>
+      <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
+          style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
       <li><a href="{% url 'home:Logout' %}">Logout</a></li>
       <li><a href="{% url 'home:Display' %}" class="active">Link</a></li>
     </ul>
   </nav>
 </head>
-<image src="{% static 'display/fosh.png' %}" class="circle">
 
-  <body>
+
+  <body style="padding-top: 60px;">
+    <image src="{% static 'display/fosh.png' %}" class="circle"></image>
     <h2 style="margin-top: 10px; margin-bottom: 2px;">Edit Profile</h2>
     <div class="centered-container">
       <p>Name: {{ user_profile.name }}</p>
