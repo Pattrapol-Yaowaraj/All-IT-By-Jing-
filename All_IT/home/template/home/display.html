@@ -116,9 +116,17 @@
 
         .centered-container {
             display: block;
-        place-items: center;
-        align-items: center;
-        text-align: center;
+            place-items: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .button-container{
+            display: block;
+            place-items: center;
+            align-items: center;
+            text-align: center;
+            padding-right: 100px;
         }
 
         /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
@@ -139,7 +147,7 @@
     <h2 style="padding-top: 20px;">นี่คือ link ของเจ้า</h2>
     <main>
         <ul>
-            <div class="centered-container" style="text-align: center;">
+            <div class="button-container" style="text-align: center;">
 
                 {% for link2 in links_for_user %}
                 <class="button-link">
