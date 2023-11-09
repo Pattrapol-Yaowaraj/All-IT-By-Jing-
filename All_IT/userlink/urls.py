@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
 
+app_name = 'userlink'
+
 urlpatterns = [
-    path('input_link/', views.input_link, name='input_link'),
-    path('display_links/', views.display_links, name='display_links'),
+    path('userlink/<str:user_sid>/', views.userlink, name='userlink'),
+    path('userlink/<int:link_id>/delete/', views.delete_link, name='delete_link'),
 ]

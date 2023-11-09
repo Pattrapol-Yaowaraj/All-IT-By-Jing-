@@ -38,7 +38,8 @@ def Editprofile(request):
 def Display(request):
     user_year = request.session.get('user_year', 0)
     user_major = request.session.get('user_major', 'nah')
-    user_profile = UserProfile.objects.filter(year=user_year, major=user_major).first()
+    user_sid = request.session.get('user_sid', '0')
+    user_profile = UserProfile.objects.filter(year=user_year, major=user_major, sid=user_sid).first()
 
     if request.method == 'POST':
         email = request.POST.get('floatingInput')
@@ -51,19 +52,20 @@ def Display(request):
                     user_profile = UserProfile.objects.get(user=user)
                 user_year = user_profile.year
                 user_major = user_profile.major
+                user_sid = user_profile.sid
                 request.session['user_year'] = user_year
                 request.session['user_major'] = user_major
-                user_links = list(UserLink.objects.all().values())
+                request.session['user_sid'] = user_sid
                 links_for_user = list(LinkForIT.objects.filter(year=user_year, major=user_major).values())
-                return JsonResponse({'valid': True, 'user_year': user_year, 'user_major': user_major, 'user_links': user_links, 'links_for_user': links_for_user})
+                return JsonResponse({'valid': True, 'user_year': user_year, 'user_major': user_major, 'links_for_user': links_for_user, 'user_sid':user_sid})
             except UserProfile.DoesNotExist:
                 return JsonResponse({'valid': False, 'error': 'UserProfile does not exist for this user.'})
         else:
             return JsonResponse({'valid': False, 'error': 'Authentication failed.'})
 
-    user_links = UserLink.objects.all()
+    user_links = UserLink.objects.filter(sid=user_sid)
     links_for_user = LinkForIT.objects.filter(year=user_year, major=user_major)
-    return render(request, 'home/display.html', {'user_links': user_links, 'links_for_user': links_for_user})
+    return render(request, 'home/display.html', {'user_links': user_links, 'links_for_user': links_for_user, 'user_sid': user_sid})
 
 def Logout(request):
     logout(request)
