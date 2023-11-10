@@ -129,7 +129,11 @@
             padding-right: 90px;
         }
 
-        /* ทำให้ปุ่มลิงค์อยู่ตรงกลาง */
+        .btn-primary{
+            text-decoration: none;
+            color: lightblue;
+        }
+
     </style>
 </head>
 <nav>
@@ -149,7 +153,6 @@
     <main>
         <ul>
             <div class="button-container" style="text-align: center;">
-
                 {% for link2 in links_for_user %}
                 <class="button-link">
                     <a href="{{ link2.link }}" class="button-link" target="_blank">{{ link2.link_name }}</a>
@@ -166,7 +169,7 @@
                     </div>
                 {% endfor %}
                 {% if user_sid %}
-                    <a href="{% url 'userlink:userlink' user_sid %}" class="btn btn-primary">Add Personal Link</a>
+                    <a href="{% url 'userlink:userlink' user_sid %}"  class="btn-primary">Add Personal Link</a>
                 {% endif %}
             </div><br>
         </ul>
