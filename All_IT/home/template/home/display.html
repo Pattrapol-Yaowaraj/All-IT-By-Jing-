@@ -134,6 +134,46 @@
             color: lightblue;
         }
 
+        .self-link {
+            background-color: lightblue;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #0825b4;
+            font-size: medium;
+            font-weight: bold;
+            width: 130%;
+            height: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        .self-link:hover{
+            background-color: #0825b4;
+            color: lightblue;
+        }
+
+        .button-del {
+            background-color: coral;
+            border-radius: 0 10px 10px 0;
+            border: none;
+            text-decoration: none;
+            color: #0825b4;
+            font-size: medium;
+            font-weight: bold;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        
+        .button-del:hover{
+            background-color: #0825b4;
+            color: lightblue;
+        }
     </style>
 </head>
 <nav>
@@ -159,17 +199,17 @@
                     </button><br>
                     {% endfor %}
                 {% for user_link in user_links %}
-                    <div class="button-link">
-                        <a href="{{ user_link.link }}" class="button-link" target="_blank">{{ user_link.description }}</a>
+                    <div class="self-link">
+                        <a href="{{ user_link.link }}" class="self-link" target="_blank" style="border-radius: 10px 0 0 10px;">{{ user_link.description }}</a>
                         <form action="{% url 'userlink:delete_link' user_link.id %}" method="post" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit" class="edit-button" onclick="return confirm('Are you sure you want to delete this link?')">Delete</button>
+                            <button type="submit" class="button-del" onclick="return confirm('Are you sure you want to delete this link?')">Delete</button>
                         </form>
                         <br>
                     </div>
                 {% endfor %}
                 {% if user_sid %}
-                    <a href="{% url 'userlink:userlink' user_sid %}"  class="btn-primary">Add Personal Link</a>
+                    <br><a href="{% url 'userlink:userlink' user_sid %}"  class="self-link">Add Personal Link</a>
                 {% endif %}
             </div><br>
         </ul>
