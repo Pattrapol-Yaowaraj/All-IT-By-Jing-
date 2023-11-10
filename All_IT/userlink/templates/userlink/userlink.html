@@ -10,9 +10,22 @@
   <title>Sign Up</title>
   <style>
 
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        min-height: 100vh;
+       }
+    }
+
+    @media (max-width: 1025px) {
+        .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        min-height: 100vh;
+            }
+        }
     body {
         font-family: 'Kanit', sans-serif;
-        padding: 20px;
+        padding: 15% 0 15% 0;
         color: white;
         background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
         background-repeat: no-repeat;
@@ -23,45 +36,73 @@
         justify-content: center;
     }
 
-    .button {
-        background-color: #305dff;
+    .button-sub {
+        background-color: #0825b4;
         border-radius: 10px;
         text-decoration: none;
         color: rgb(255, 255, 255);
         font-size: small;
         font-weight: bold;
         border: none;
-        width: 50%;
-        height: 35%;
+        width: 40%;
+        height: 70%;
+        padding: 10px;
         cursor: pointer;
         align-items: center;
         justify-content: center;
         display: flex;
+        margin-top: 10px;
+        margin-left: 10%;
+        transform: translate(50%, -50%);
     }
 
     input {
-      width: 100%;
-      height: 50%;
-      padding: auto;
+      width: 80%;
+      height: 20%;
+      padding: 10px;
       box-sizing: border-box;
       color: #161368;
       border: 1px solid #ccc;
       border-radius: 10px;
     }
 
+    label {
+      display: block;
+      color: #0825b4;
+    }
+
+    .form-group {
+      align-items: center;
+      padding: 15px 20px 5px 20px;
+    }
+
+    .centered-container {
+            display: block;
+            place-items: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.849);
+            height: 35%;
+            width: 70%;
+            border-radius: 10px;
+    }
+
 </style>
 </head>
-
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="sid" value="{{ sid }}">
-    <div class="form-group">
-        <label for="{{ form.link.id_for_label }}">Link</label><br>
-        <input type="text" name="{{ form.link.name }}" id="{{ form.link.id_for_label }}" class="form-control">
-    </div><br>
-    <div class="form-group">
-        <label for="{{ form.description.id_for_label }}">Description</label><br>
-        <input type="text" name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control">
-    </div><br>
-    <button type="submit" class="button">Submit</button>
-</form>
+<body>
+    <div class="centered-container">
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="sid" value="{{ sid }}">
+        <div class="form-group">
+            <label for="{{ form.link.id_for_label }}">โปรดกรอก link ของเจ้า</label>
+            <input type="text" name="{{ form.link.name }}" id="{{ form.link.id_for_label }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">ปลายทางที่ link นำไป</label>
+            <input type="text" name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control">
+        </div><br>
+        <button type="submit" class="button-sub">Submit</button>
+    </div>
+    </form>
+</body>
