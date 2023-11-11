@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,7 +93,53 @@
             border-radius: 10px;
     }
 
+    .ul-upper {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    nav {
+      background-color: #ffffff;
+      color: #fff;
+      padding-right: 100px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      align-items: center;
+
+    }
+
+    li {
+      float: right;
+    }
+
+    li a {
+      display: block;
+      color: #305dff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #305dff;
+      color: #ffffff;
+    }
+
 </style>
+<nav>
+    <ul class="ul-upper">
+      <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
+          style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
+      <li><a href="{% url 'home:Logout' %}">Logout</a></li>
+      <li><a href="{% url 'home:edit' %}" class="active">Profile</a></li>
+      <li><a href="{% url 'home:Display' %}" class="active">Link</a></li>
+        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">Help us Gather Data</a></li>
+    </ul>
+  </nav>
 </head>
 <body>
     <div class="centered-container">
