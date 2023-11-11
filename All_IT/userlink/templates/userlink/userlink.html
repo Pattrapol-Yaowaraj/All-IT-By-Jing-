@@ -10,34 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
   <title>Sign Up</title>
   <style>
-
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-        min-height: 100vh;
-       }
-    }
-
-    @media (max-width: 1025px) {
-        .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-        min-height: 100vh;
-            }
-        }
     body {
         font-family: 'Kanit', sans-serif;
         padding: 15% 0 15% 0;
         color: white;
-        background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
+        background-image: url("{% static 'display/display.png' %}");
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-size: cover;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
+    .logo{
+        height: auto;
+        width: 95px;
+        padding-left: 100px;
+        padding-top: 5px;
+    }
+
     .button-sub {
+        font-family: "Kanit", sans-serif;
         background-color: #0825b4;
         border-radius: 10px;
         text-decoration: none;
@@ -109,7 +103,8 @@
       position: fixed;
       top: 0;
       align-items: center;
-
+      display: flex;
+      justify-content: space-between;
     }
 
     li {
@@ -129,16 +124,78 @@
       color: #ffffff;
     }
 
-</style>
-<nav>
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%; 
+      text-align: center;
+      top: 100%; 
+    }
+
+    .dropdown a {
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: #305dff;
+    }
+
+    .dropdown a:hover {
+      background-color: #305dff;
+      color: #ffffff;
+    }
+
+    .menu-btn {
+      display: none;
+      background-color: #ffffff;
+      color: #305dff;
+      border: none;
+      padding: 14px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      order: 2; 
+    }
+    @media screen and (max-width: 767px) {
+      .ul-upper {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .dropdown.show {
+        display: block;
+      }
+
+      nav {
+        padding-right: 0;
+        flex-direction: column;
+      }
+      .logo{
+        padding-left: 0;
+      }
+    }
+  </style>
+  <nav>
+    <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}" class="logo"></a>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
     <ul class="ul-upper">
-      <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
-          style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
       <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
       <li><a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a></li>
       <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
-        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
+      <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
     </ul>
+    <div class="dropdown" id="dropdown-menu">
+      <a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a>
+      <a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a>
+      <a href="{% url 'home:Display' %}" class="active">สมบัติ</a>
+      <a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a>
+    </div>
   </nav>
 </head>
 <body>
@@ -155,6 +212,13 @@
             <input type="text" name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control">
         </div><br>
         <button type="submit" class="button-sub">ยืนยัน</button>
-    </div>
     </form>
+    </div>
+  <script>
+    function toggleMenu() {
+      var dropdownMenu = document.getElementById("dropdown-menu");
+      dropdownMenu.classList.toggle("show");
+    }
+  </script>
 </body>
+</html>

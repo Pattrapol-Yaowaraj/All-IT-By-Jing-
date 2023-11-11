@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -13,9 +14,9 @@
       font-family: "Kanit", sans-serif;
       padding: 20px;
       color: white;
-      background-image: linear-gradient(#5590d0, rgb(42, 29, 94));
-      background-attachment: fixed;
+      background-image: url("{% static 'display/display.png' %}");
       background-repeat: no-repeat;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -45,6 +46,7 @@
 
     /* Style the submit button */
     button {
+      font-family: "Kanit", sans-serif;
       padding: 10px 20px;
       width: 20%;
       border: none;

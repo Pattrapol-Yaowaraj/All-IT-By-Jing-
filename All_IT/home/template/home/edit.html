@@ -23,12 +23,14 @@
       font-family: "Kanit", sans-serif;
       color: white;
       height: 100vh;
-      background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
-      background-attachment: fixed;
+      background-image: url("{% static 'display/display.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-top: 70px;
     }
 
     .circle {
@@ -39,6 +41,7 @@
     }
 
     button {
+      font-family: "Kanit", sans-serif;
       background-color: #0825b4;
       font-size: small;
       font-weight: bold;
@@ -112,7 +115,8 @@
       position: fixed;
       top: 0;
       align-items: center;
-
+      display: flex;
+      justify-content: space-between;
     }
 
     li {
@@ -131,20 +135,92 @@
       background-color: #305dff;
       color: #ffffff;
     }
+
+    .logo{
+      height: auto;
+      width: 95px;
+      padding-left: 100px;
+      padding-top: 5px;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+      top: 100%;
+    }
+
+    .dropdown a {
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: #305dff;
+    }
+
+    .dropdown a:hover {
+      background-color: #305dff;
+      color: #ffffff;
+    }
+
+
+    .menu-btn {
+      display: none;
+      background-color: #ffffff;
+      color: #305dff;
+      border: none;
+      padding: 14px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      order: 2;
+    }
+
+    @media screen and (max-width: 767px) {
+      .ul-upper {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .dropdown.show {
+        display: block;
+      }
+
+      .logo{
+        padding-left: 0;
+      }
+      nav {
+        padding-right: 0;
+        flex-direction: column; 
+      }
+      body {
+        padding-top: 100px;
+      }
+    }
   </style>
   <nav>
+    <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}" class="logo"></a>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
     <ul class="ul-upper">
-      <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
-          style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
       <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
       <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
       <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
     </ul>
+    <div class="dropdown" id="dropdown-menu">
+      <a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a>
+      <a href="{% url 'home:Display' %}" class="active">สมบัติ</a>
+      <a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a>
+    </div>
   </nav>
 </head>
 
 
-  <body style="padding-top: 60px;">
+  <body>
     <image src="{% static 'display/fosh.png' %}" class="circle"></image>
     <h2 style="margin-top: 10px; margin-bottom: 2px;">แก้ไขฟองอากาศ</h2>
     <div class="centered-container">
@@ -166,13 +242,20 @@
             <option value="AIT" {% if major_value == "AIT" %} selected {% endif %}>AIT</option>
             <option value="BIT" {% if major_value == "BIT" %} selected {% endif %}>BIT</option>
         </select>
-    </div>
+      </div>
       <div class="centered-container">
         <br>
         <button type="submit" class="btn btn-primary">บันทึก</button>
-        <button type="submit" name="delete_account" class="btn-btn-danger">ทำลาย</delete-button>
+        <button type="submit" name="delete_account" class="btn-btn-danger"  onclick="return confirm('เจ้าแน่ใจนะ? หากถูกทำลายแล้วจะกลับเข้ามาไม่ได้แล้วนะ')">ทำลาย</delete-button>
       </div>
     </form>
   </body>
+
+  <script>
+    function toggleMenu() {
+      var dropdownMenu = document.getElementById("dropdown-menu");
+      dropdownMenu.classList.toggle("show");
+    }
+  </script>
 
 </html>
