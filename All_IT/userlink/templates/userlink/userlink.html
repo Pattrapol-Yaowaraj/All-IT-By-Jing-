@@ -109,6 +109,7 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
+      z-index: 1000;
     }
 
     li {
@@ -162,6 +163,9 @@
       font-size: 16px;
       cursor: pointer;
       order: 2; 
+      height: auto;
+      width: 100%;
+      z-index: 1000;
     }
     @media screen and (max-width: 767px) {
       .ul-upper {
@@ -185,22 +189,22 @@
       }
     }
   </style>
-  <nav>
-    <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}" class="logo"></a>
-    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <ul class="ul-upper">
-      <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
-      <li><a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a></li>
-      <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
-      <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
-    </ul>
-    <div class="dropdown" id="dropdown-menu">
-      <a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a>
-      <a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a>
-      <a href="{% url 'home:Display' %}" class="active">สมบัติ</a>
-      <a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a>
-    </div>
-  </nav>
+    <nav>
+      <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}" class="logo"></a>
+      <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+      <ul class="ul-upper">
+        <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
+        <li><a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a></li>
+        <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
+        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
+      </ul>
+      <div class="dropdown" id="dropdown-menu">
+        <a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a>
+        <a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a>
+        <a href="{% url 'home:Display' %}" class="active">สมบัติ</a>
+        <a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a>
+      </div>
+    </nav>
 </head>
 <body>
     <div class="centered-container">
