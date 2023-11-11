@@ -134,10 +134,10 @@
     <ul class="ul-upper">
       <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
           style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
-      <li><a href="{% url 'home:Logout' %}">Logout</a></li>
-      <li><a href="{% url 'home:edit' %}" class="active">Profile</a></li>
-      <li><a href="{% url 'home:Display' %}" class="active">Link</a></li>
-        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">Help us Gather Data</a></li>
+      <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
+      <li><a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a></li>
+      <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
+        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
     </ul>
   </nav>
 </head>
@@ -147,14 +147,14 @@
         {% csrf_token %}
         <input type="hidden" name="sid" value="{{ sid }}">
         <div class="form-group">
-            <label for="{{ form.link.id_for_label }}">โปรดกรอก link ของเจ้า</label>
+            <label for="{{ form.link.id_for_label }}">โปรดกรอกสมบัติของเจ้า</label>
             <input type="text" name="{{ form.link.name }}" id="{{ form.link.id_for_label }}" class="form-control">
         </div>
         <div class="form-group">
-            <label for="{{ form.description.id_for_label }}">กรอกชื่อ link ของเจ้า</label>
+            <label for="{{ form.description.id_for_label }}">กรอกชื่อสมบัติของเจ้า</label>
             <input type="text" name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control">
         </div><br>
-        <button type="submit" class="button-sub">Submit</button>
+        <button type="submit" class="button-sub">ยืนยัน</button>
     </div>
     </form>
 </body>

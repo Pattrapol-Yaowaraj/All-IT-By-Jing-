@@ -175,16 +175,16 @@
     <ul class="ul-upper">
         <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
                 style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
-        <li><a href="{% url 'home:Logout' %}">Logout</a></li>
-        <li><a href="{% url 'home:edit' %}" class="active">Profile</a></li>
-        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">Help us Gather Data</a></li>
+        <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
+        <li><a href="{% url 'home:edit' %}" class="active">ฟองอากาศ</a></li>
+        <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
     </ul>
 </nav>
 
 <body>
 
 
-    <h2 style="padding-top: 20px;">นี่คือ link ของเจ้า</h2>
+    <h2 style="padding-top: 20px;">นี่คือสมบัติของเจ้า</h2>
     <main>
         <ul>
             <div class="button-container" style="text-align: center;">
@@ -203,7 +203,7 @@
                     </div>
                 {% endfor %}
                 {% if user_sid %}
-                    <br><a href="{% url 'userlink:userlink' user_sid %}"  class="self-link">Add Personal Link</a>
+                    <br><a href="{% url 'userlink:userlink' user_sid %}"  class="self-link">เพิ่มสมบัติส่วนตัว</a>
                 {% endif %}
             </div><br>
         </ul>

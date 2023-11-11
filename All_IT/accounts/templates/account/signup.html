@@ -65,7 +65,7 @@
 </head>
 
 <body style="text-align: center;">
-  <h1>Sign Up</h1>
+  <h1>สร้างฟองอากาศ</h1>
   <form method="post" action="{% url 'registration:register' %}" style="width: 80%;">
     {% csrf_token %}
     {% if user_form.errors %}
@@ -127,7 +127,7 @@
       <input type="password" id="password2" name="password2" required>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit">ยืนยัน</button>
   </form>
 </body>
 

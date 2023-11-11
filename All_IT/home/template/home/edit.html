@@ -136,9 +136,9 @@
     <ul class="ul-upper">
       <a href="{% url 'home:Home' %}"><img src="{% static 'display/logo.png' %}"
           style="height: auto;width: 95px; padding-left: 100px; padding-top: 5px;"></a>
-      <li><a href="{% url 'home:Logout' %}">Logout</a></li>
-      <li><a href="{% url 'home:Display' %}" class="active">Link</a></li>
-      <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">Help us Gather Data</a></li>
+      <li><a href="{% url 'home:Logout' %}">ออกจากใต้ทะเล</a></li>
+      <li><a href="{% url 'home:Display' %}" class="active">สมบัติ</a></li>
+      <li><a href="https://forms.gle/VttQzh7xQsoSYSiC6" class="active" target="_blank">ช่วยเราหาสมบัติ</a></li>
     </ul>
   </nav>
 </head>
@@ -146,7 +146,7 @@
 
   <body style="padding-top: 60px;">
     <image src="{% static 'display/fosh.png' %}" class="circle"></image>
-    <h2 style="margin-top: 10px; margin-bottom: 2px;">Edit Profile</h2>
+    <h2 style="margin-top: 10px; margin-bottom: 2px;">แก้ไขฟองอากาศ</h2>
     <div class="centered-container">
       <p>Name: {{ user_profile.name }}</p>
       <p>Student ID: {{ user_profile.sid }}</p>
@@ -169,8 +169,8 @@
     </div>
       <div class="centered-container">
         <br>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <button type="submit" name="delete_account" class="btn-btn-danger">Delete Account</delete-button>
+        <button type="submit" class="btn btn-primary">บันทึก</button>
+        <button type="submit" name="delete_account" class="btn-btn-danger">ทำลาย</delete-button>
       </div>
     </form>
   </body>
