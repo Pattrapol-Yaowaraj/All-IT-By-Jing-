@@ -1,0 +1,47 @@
+body {
+    font-family: "Kanit", sans-serif;
+    height: 100vh;
+    background-image: url("{% static 'display/real.png' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px) brightness(95%);
+}
+
+.form-signin {
+    max-width: 500px;
+    padding: 1rem;
+    text-align: center;
+    color: #95aed4;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="username"] {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    color: #161368;
+}
+
+.form-signin input[type="password"] {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color: #161368;
+}
+
+.signup {
+    text-decoration: none;
+    color: rgb(255, 175, 55);
+}
+
+.signup:hover {
+    text-decoration: underline;
+    color: rgb(55, 208, 255);
+}

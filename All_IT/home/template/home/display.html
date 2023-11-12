@@ -10,224 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Kanit', sans-serif;
-            padding: 20px;
-            color: white;
-            background-image: url("{% static 'display/display.png' %}");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ul-upper {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #ffffff;
-        }
-
-        nav {
-            background-color: #ffffff;
-            color: #fff;
-            padding-right: 100px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        li {
-            float: right;
-        }
-
-        li a {
-            display: block;
-            color: #305dff;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover {
-            background-color: #305dff;
-            color: #ffffff;
-        }
-
-        .edit-button {
-            padding: 10px;
-            width: 70%;
-            border: none;
-            border-radius: 10px;
-            background-color: #305dff;
-            color: white;
-            cursor: pointer;
-            margin: auto;
-            display: block;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .edit-button:hover {
-            background-color: #2e59a8;
-        }
-
-        .button-link {
-            background-color: #0325ce;
-            border-radius: 10px;
-            text-decoration: none;
-            color: rgb(196, 238, 252);
-            font-size: medium;
-            font-weight: bold;
-            width: 130%;
-            height: 50px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        .button-link:hover {
-            background-color: rgb(196, 238, 252);
-            color: #0325ce;
-        }
-
-        .centered-container {
-            display: block;
-            place-items: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .button-container {
-            display: block;
-            place-items: center;
-            align-items: center;
-            text-align: center;
-            padding-right: 90px;
-        }
-
-        .self-link {
-            background-color: #6115d4;
-            border-radius: 10px;
-            text-decoration: none;
-            color: rgb(220, 224, 253);
-            font-size: medium;
-            font-weight: bold;
-            width: 130%;
-            height: 50px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        .self-link:hover {
-            background-color: rgb(220, 224, 253);
-            color: #6115d4;
-        }
-
-        .button-del {
-            background-color: coral;
-            border-radius: 0 10px 10px 0;
-            border: none;
-            text-decoration: none;
-            color: #4d08b4;
-            font-size: medium;
-            font-weight: bold;
-            width: 100%;
-            height: 50px;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        .button-del:hover {
-            background-color: rgb(255, 177, 148);
-            color: rgb(255, 94, 36);
-        }
-
-        .logo {
-            height: auto;
-            width: 95px;
-            padding-left: 100px;
-            padding-top: 5px;
-        }
-        .dropdown {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            width: 100%;
-            text-align: center;
-            top: 100%;
-        }
-
-        .dropdown a {
-            display: block;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            color: #305dff;
-        }
-
-        .dropdown a:hover {
-            background-color: #305dff;
-            color: #ffffff;
-        }
-
-        .menu-btn {
-            display: none;
-            background-color: #ffffff;
-            color: #305dff;
-            border: none;
-            padding: 14px 16px;
-            font-size: 16px;
-            cursor: pointer;
-            order: 2;
-        }
-
-        @media screen and (max-width: 767px) {
-            .ul-upper {
-                display: none;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .menu-btn:hover {
-                color: coral;
-            }
-
-            .dropdown.show {
-                display: block;
-            }
-
-            nav {
-                padding-right: 0;
-                flex-direction: column;
-            }
-
-            .logo {
-                padding-left: 0px;
-            }
-
-            body {
-                margin-top: 70px;
-            }
-        }
-    </style>
+    <link href="{% static 'display/display.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -254,7 +37,7 @@
                     <a href="{{ link2.link }}" class="button-link" target="_blank">{{ link2.link_name }}</a>
                     </button><br>
                     {% endfor %}
-                {% for user_link in user_links %}
+                    {% for user_link in user_links %}
                     <div class="self-link">
                         <a href="{{ user_link.link }}" class="self-link" target="_blank"
                             style="border-radius: 10px 0 0 10px;">{{ user_link.description }}</a>
@@ -266,10 +49,10 @@
                         </form>
                     </div>
                     <br>
-                {% endfor %}
-                {% if user_sid %}
-                <a href="{% url 'userlink:userlink' user_sid %}" class="self-link">เพิ่มสมบัติส่วนตัว</a>
-                {% endif %}
+                    {% endfor %}
+                    {% if user_sid %}
+                    <a href="{% url 'userlink:userlink' user_sid %}" class="self-link">เพิ่มสมบัติส่วนตัว</a>
+                    {% endif %}
             </div><br>
         </ul>
     </main>

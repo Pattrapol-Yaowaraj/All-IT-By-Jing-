@@ -1,0 +1,64 @@
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 1025px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        min-height: 100vh;
+    }
+}
+
+body {
+    font-family: "Kanit", sans-serif;
+    font-size: medium;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-home {
+    background-color: #0825b4;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    width: 40%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    transform: translate(75%, -50%);
+}
+
+.button-home:hover {
+    background-color: white;
+    color: #0825b4;
+}
+
+.centered-container {
+    display: block;
+    place-items: center;
+    align-items: center;
+    font-size: small;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.849);
+    color: #0825b4;
+    height: 35%;
+    width: 80%;
+    border-radius: 10px;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

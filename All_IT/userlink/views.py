@@ -15,7 +15,8 @@ def userlink(request, user_sid):
             link = form.cleaned_data['link']
             description = form.cleaned_data['description']
             user = request.user
-            UserLink.objects.create(link=link, description=description, sid=user_sid, user=user)
+            UserLink.objects.create(link=link, description=description\
+                                    , sid=user_sid, user=user)
 
             return redirect('home:Display')
     else:

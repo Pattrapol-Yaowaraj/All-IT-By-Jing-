@@ -33,7 +33,8 @@ def Editprofile(request):
     else:
         form = UserProfileEditForm(instance=user_profile)
 
-    return render(request, 'home/edit.html', {'form': form, 'user_profile': user_profile, 'major_value': major_value})
+    return render(request, 'home/edit.html', {'form': form, 'user_profile'\
+                                              : user_profile, 'major_value': major_value})
 
 def Display(request):
     user_year = request.session.get('user_year', 0)
@@ -57,7 +58,8 @@ def Display(request):
                 request.session['user_major'] = user_major
                 request.session['user_sid'] = user_sid
                 links_for_user = list(LinkForIT.objects.filter(year=user_year, major=user_major).values())
-                return JsonResponse({'valid': True, 'user_year': user_year, 'user_major': user_major, 'links_for_user': links_for_user, 'user_sid':user_sid})
+                return JsonResponse({'valid': True, 'user_year': user_year, 'user_major': user_major\
+                                     , 'links_for_user': links_for_user, 'user_sid':user_sid})
             except UserProfile.DoesNotExist:
                 return JsonResponse({'valid': False, 'error': 'UserProfile does not exist for this user.'})
         else:
@@ -65,7 +67,8 @@ def Display(request):
 
     user_links = UserLink.objects.filter(sid=user_sid)
     links_for_user = LinkForIT.objects.filter(year=user_year, major=user_major)
-    return render(request, 'home/display.html', {'user_links': user_links, 'links_for_user': links_for_user, 'user_sid': user_sid})
+    return render(request, 'home/display.html', {'user_links': user_links, 'links_for_user'\
+                                                 : links_for_user, 'user_sid': user_sid})
 
 def Logout(request):
     logout(request)
