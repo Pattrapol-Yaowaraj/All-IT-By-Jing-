@@ -1,16 +1,3 @@
-body {
-    font-family: "Kanit", sans-serif;
-    height: 100vh;
-    background-image: url("{% static 'display/real.png' %}");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(2px) brightness(95%);
-}
-
 .form-signin {
     max-width: 500px;
     padding: 1rem;

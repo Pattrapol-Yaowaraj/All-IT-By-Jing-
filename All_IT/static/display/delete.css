@@ -12,19 +12,6 @@
     }
 }
 
-body {
-    font-family: "Kanit", sans-serif;
-    font-size: medium;
-    height: 100vh;
-    color: rgb(255, 255, 255);
-    background-image: linear-gradient(rgb(85, 144, 208), rgb(42, 29, 94));
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .button-home {
     background-color: #0825b4;
     border-radius: 10px;

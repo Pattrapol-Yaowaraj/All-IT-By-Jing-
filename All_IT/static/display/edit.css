@@ -10,20 +10,6 @@
     }
   }
 
-  body {
-    font-family: "Kanit", sans-serif;
-    color: white;
-    height: 100vh;
-    background-image: url("{% static 'display/display.png' %}");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 70px;
-  }
-
   .circle {
     border-radius: 100%;
     width: 175px;
