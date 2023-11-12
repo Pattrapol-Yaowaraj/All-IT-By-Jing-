@@ -13,7 +13,7 @@ def register(request):
         
         if user_form.is_valid() and profile_form.is_valid():
             username = user_form.cleaned_data['username']
-            sid = request.POST.get('sid')  # Correctly get sid from POST data
+            sid = request.POST.get('sid')
             
             if User.objects.filter(username=username).exists():
                 messages.error(request, 'Username is already taken.')
@@ -36,11 +36,6 @@ def register(request):
         profile_form = UserProfileForm()
     
     return render(request, 'account/signup.html', {'user_form': user_form, 'profile_form': profile_form})
+
 def registration_success(request):
     return redirect(reverse('home:Home'))
-
-def validate_credentials(request):
-    email = request.POST.get('email')
-    password = request.POST.get('password')
-
-    return JsonResponse({'success': True})
