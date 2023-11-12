@@ -106,11 +106,11 @@ body {
                     if (data.valid) {
                         window.location.href = '/display';
                     } else {
-                        alert('Invalid credentials. Please try again.');
+                        alert('ฟองอากาศที่เจ้าบอกมาไม่มีนะ แน่ใจนะว่าเจ้ามีฟองอากาศแล้ว');
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    console.error('พัง', error);
                 });
         });
     </script>
