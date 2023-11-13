@@ -23,7 +23,8 @@ All IT จึงถูกสร้างขึ้นเพื่อเป็น�
 
 ## รายงาน
 
-[คัมภีร์แห่ง All IT](https://kmitlthailand-my.sharepoint.com/:w:/g/personal/66070148_kmitl_ac_th/EfbXlJMB-VRLnah3c0vnqFwBtw71F-ll3rEpFkucpJ5-Zw?e=wQqJQR)
+[คัมภีร์แห่ง All IT](https://kmitlthailand-my.sharepoint.com/:w:/g/personal/66070148_kmitl_ac_th/EfbXlJMB-VRLnah3c0vnqFwBtw71F-ll3rEpFkucpJ5-Zw?e=8hULLO)
+
 
 
 ## ผู้ดูแลแห่งใต้ท้องทะเลลึก
