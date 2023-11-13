@@ -16,9 +16,9 @@ All IT จึงถูกสร้างขึ้นเพื่อเป็น�
 
 ## ภาพจากใต้ทะเล
 
-![App Screenshot](https://i.imgur.com/9PcupG7.png)
+![App Screenshot](https://i.imgur.com/VdMNS8l.png)
 
-![App Screenshot](https://i.imgur.com/WAhj1pA.png)
+![App Screenshot](https://i.imgur.com/JM2fhsV.png)
 
 
 ## รายงาน
